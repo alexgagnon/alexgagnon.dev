@@ -2,6 +2,38 @@
 import Layout from '../layouts/Layout.astro';
 import {FUICard} from '@ferment-ui/web-components';
 
+enum SKILLS {
+  Agile = "Agile",
+  Astro = "Astro",
+  Azure = "Azure",
+  Azure_DevOps = "Azure DevOps",
+  C_Sharp = "C#",
+  Cloudflare = "Cloudflare",
+  Docker = "Docker",
+  Eleventy = "11ty",
+  Git = "Git",
+  Github_Actions = "Github Actions",
+  Github_Pages = "Github Pages",
+  HTML_CSS = "HTML/CSS",
+  Java = "Java",
+  JS_TS = "JS/TS",
+  Linux = "Linux",
+  Lit = "Lit",
+  Postgres = "Postgres",
+  Python = "Python",
+  Redis = "Redis",
+  REST = "RESTful APIs",
+  Rust = "Rust",
+  Shell = "Shell",
+  Spring = "Spring",
+  SQL = "SQL",
+  TDD = "Test Driven Development",
+  Terraform = "Terraform",
+  VueJS = "VueJS",
+  Windows = "Windows",
+  Wordpress = "Wordpress",
+}
+
 const skills = {
   "Specializations": "Front-end development, DevOps,  Cloud architecture",
   "Languages": "in order of comfort, JS/TS (browser and Node.js), HTML/CSS, Java, Python, C#, Rust, Shell, SQL",
@@ -9,7 +41,7 @@ const skills = {
   "IaC": "Terraform",
   "Frameworks and libraries": "Spring, ExpressJS, Lit, ReactJS, VueJS, Astro, 11ty",
   "APIs": "RESTful and GraphQL",
-  "Databases": "MySQL/PostgreSQL, ElasticSearch, Redis, Oracle",
+  "Databases": "MySQL/PostgreSQL, ElasticSearch, Redis",
   "Containerization": "Docker",
   "CI/CD": "Azure DevOps, Github Actions",
   "SCM": "Git",
@@ -22,26 +54,82 @@ const otherSkills = [
   "Excellent in problem solving and communication",
   "Quick at learning new concepts",
 ];
+
+const experiences = [
+  {
+    title: "Technical Lead",
+    employer: "Economic and Social Development Canada",
+    project: "WCMS",
+    date: "2020 - Present",
+    highlights: [],
+    skills: [SKILLS.JS_TS, SKILLS.Lit, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.Spring, SKILLS.Azure_DevOps, SKILLS.Git, SKILLS.Terraform, SKILLS.Docker, SKILLS.Git, SKILLS.Azure_DevOps, SKILLS.Azure, SKILLS.PostgreSQL, SKILLS.Redis, SKILLS.Windows],
+    additional: "Azure services used: DNS, Frontdoor, App Gateway, App Service, Functions, Storage Account, Cognitive Search"
+  },
+  {
+    title: "Founder & Full Stack Developer",
+    employer: "Monad Media",
+    date: "2019 - Present",
+    highlights: [],
+    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Lit, SKILLS.Git, SKILLS.Github_Pages, SKILLS.Github_Actions, SKILLS.Cloudflare, SKILLS.Linux, SKILLS.Wordpress]
+  },
+  {
+    title: "Technical Advisor",
+    employer: "Health Canada",
+    project: "Quarantine Case Management System",
+    date: "March 2020 - June 2021",
+    highlights: [],
+    skills: [SKILLS.Azure, SKILLS.REST, SKILLS.Terraform, SKILLS.Git],
+    additional: "Azure services used: Data Factory, Event Grid, APIM"
+  },
+  {
+    title: "Technical Lead",
+    employer: "Health Canada",
+    project: "Drug Submission Tracking System",
+    date: "April 2018 - June 2021",
+    highlights: [],
+    skills: []
+  },
+]
 ---
 
 <Layout title="Resume">
-  <h1>Resume</h1>
-  <details>
-    <summary>Skills</summary>
-    <dl>
-      {Object.entries(skills).map(([key, value]) => (
-        <div>
-          <dt>{key}</dt>
-          <dd>{value}</dd>
-        </div>
-      ))}
-    </dl>
-    <ul>
-      {otherSkills.map(skill => (
-        <li>{skill}</li>
-      ))}
-    </ul>
-  </details>
+  <div class="page">
+    <h1>Resume</h1>
+    <details>
+      <summary><h2 class="h4 d-inline">Skills</h2></summary>
+      <dl>
+        {Object.entries(skills).map(([key, value]) => (
+          <div>
+            <dt>{key}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))}
+      </dl>
+      <ul>
+        {otherSkills.map(skill => (
+          <li>{skill}</li>
+        ))}
+      </ul>
+    </details>
+    <details>
+      <summary><h2 class="h4 d-inline">Experience</h2></summary>
+      <div id='experiences'>
+        {experiences.map(({title, employer, date, highlights, skills, additional}) => (
+          <FUICard>
+            <h3>{title} - {employer}</h3>
+            <p>{date}</p>
+            <ul>
+              {highlights.map(highlight => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+            <p><strong>Skills:</strong>&nbsp;{skills.join(", ")}</p>
+            {additional ?? <p>{additional}</p>}
+          </FUICard>
+        ))}
+      </div>
+    </details>
+  </div>
 </Layout>
 
 <style>
@@ -50,8 +138,15 @@ const otherSkills = [
   }
 
   summary {
-    font-weight: bold;
     cursor: pointer;
+  }
+
+  summary::marker {
+    list-style: none;
+  }
+
+  summary:-webkit-details-marker {
+    display: none;
   }
 
   dt {
@@ -70,5 +165,11 @@ const otherSkills = [
 
   ul {
     list-style-type: disc;
+  }
+
+  #experiences {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-responsive);
   }
 </style>

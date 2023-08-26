@@ -59,9 +59,9 @@ const { title } = Astro.props;
     --font-family-body: 'Bricolage Grotesque', sans-serif;
     --font-family-heading: 'Noto Serif', serif;
     --font-family-display: 'Handjet', serif;
-    --border-radius: 0;
+    --br: 4px;
     --border: 2px solid currentColor;
-    --gap-responsive: clamp(1rem, 5%, 3rem);
+    --gap-responsive: clamp(2rem, 5%, 4rem);
   }
 
   @media (min-width: 768px) {
@@ -77,7 +77,7 @@ const { title } = Astro.props;
   }
 
   *:focus {
-    outline: 2px solid currentColor;
+    outline: 2px dashed currentColor;
   }
 
   ul {
@@ -191,6 +191,18 @@ const { title } = Astro.props;
     gap: var(--gap-responsive);
   }
 
+  .p-static {
+    position: static;
+  }
+
+  .p-relative {
+    position: relative;
+  }
+
+  .p-absolute {
+    position: absolute;
+  }
+
   .d-block {
     display: block;
   }
@@ -247,6 +259,30 @@ const { title } = Astro.props;
   .v-on-pin:hover {
     top: 0;
   }
+
+  .sr-only	{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .not-sr-only	{
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
 </style>
 <style>
   body {
