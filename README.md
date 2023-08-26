@@ -1,3 +1,3 @@
 # Personal website
 
-Built with Ferment UI and (Astro)[https://astro.build].
+Built with Ferment UI and [Astro](https://astro.build).
