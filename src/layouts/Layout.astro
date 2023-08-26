@@ -1,0 +1,292 @@
+--- 
+import { FUIEmailAddress } from '@ferment-ui/web-components';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Alex Gagnon | {title}</title>
+		<meta name="description" content="Personal site for Alex Gagnon">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap&text=AlexGagnon0123456789|" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=Noto+Serif&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+	</head>
+	<body>
+    <a href='#main' class='v-on-pin'>Skip to main content</a>
+    <header role="banner">
+      <div class="a-end" style="padding: 1rem 2rem"><FUIEmailAddress user="xela" domain="aidem.danom" /></div>
+      <nav>
+        <ul>
+          <li id="logo"><a href="/" class='fs-h2 ff-display'>Alex Gagnon</a></li>
+          <li id="menu">
+            <ul>
+              <li><a href="/about">About</a></li>
+              <li><a href="/resume">Resume</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id='main'>
+      <slot />
+    </main>
+    <footer>
+      <p class='ff-display fs-h5'>© {new Date().getFullYear()} | Alex Gagnon</p>
+    </footer>
+	</body>
+</html>
+<style is:global>
+  :root {
+    --font-scale: 1.2;
+    --font-scale-start: 1rem;
+    --font-size-h6: var(--font-scale-start);
+    --font-size-h5: calc(var(--font-scale) * var(--font-size-h6));
+    --font-size-h4: calc(var(--font-scale) * var(--font-size-h5));
+    --font-size-h3: calc(var(--font-scale) * var(--font-size-h4));
+    --font-size-h2: calc(var(--font-scale) * var(--font-size-h3));
+    --font-size-h1: calc(var(--font-scale) * var(--font-size-h2));
+    --font-family-body: 'Bricolage Grotesque', sans-serif;
+    --font-family-heading: 'Noto Serif', serif;
+    --font-family-display: 'Handjet', serif;
+    --border-radius: 0;
+    --border: 2px solid currentColor;
+    --gap-responsive: clamp(1rem, 5%, 3rem);
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --font-scale: 1.33;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  *:focus {
+    outline: 2px solid currentColor;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    font-family: var(--font-family-heading);
+  }
+
+  h1, .h1 {
+    font-size: var(--font-size-h1);
+  }
+
+  h2, .h2 {
+    font-size: var(--font-size-h2);
+  }
+
+  h3, .h3 {
+    font-size: var(--font-size-h3);
+  }
+
+  h4, .h4 {
+    font-size: var(--font-size-h4);
+  }
+
+  h5, .h5 {
+    font-size: var(--font-size-h5);
+  }
+
+  h6, .h6 {
+    font-size: var(--font-size-h6);
+  }
+
+  .ff-body {
+    font-family: var(--font-family-body);
+  }
+
+  .ff-display {
+    font-family: var(--font-family-display);
+  }
+
+  .fs-body {
+    font-size: var(--font-size-body);
+  }
+
+  .fs-h1 {
+    font-size: var(--font-size-h1);
+  }
+
+  .fs-h2 {
+    font-size: var(--font-size-h2);
+  }
+
+  .fs-h3 {
+    font-size: var(--font-size-h3);
+  }
+
+  .fs-h4 {
+    font-size: var(--font-size-h4);
+  }
+
+  .fs-h5 {
+    font-size: var(--font-size-h5);
+  }
+
+  .fs-h6 {
+    font-size: var(--font-size-h6);
+  }
+
+  .a-row {
+    flex-direction: row;
+  }
+
+  .a-column {
+    flex-direction: column;
+  }
+
+  .a-start {
+    display: flex;
+    justify-content: flex-start;
+  } 
+
+  .a-end {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .a-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .l-start {
+    display: grid;
+    place-content: start;
+  }
+
+  .l-end {
+    display: grid;
+    place-content: end;
+  }
+
+  .l-center {
+    display: grid;
+    place-content: center;
+  }
+
+  .g-responsive {
+    gap: var(--gap-responsive);
+  }
+
+  p + * {
+    margin-top: var(--gap-responsive);
+  }
+
+  .page {
+    min-width: 6rem;
+    padding: 1.5rem clamp(1rem, 5%, 3rem);
+  }
+
+  main {
+    grid-area: main;
+    display: flex;
+    align-items: stretch;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: var(--border);
+    text-decoration: none;
+  }
+
+  .v-on-pin {
+    position: absolute;
+    top: -100vh;
+    left: 0;
+  }
+
+  .v-on-pin:focus,
+  .v-on-pin:hover {
+    top: 0;
+  }
+</style>
+<style>
+  body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    grid-template-rows: auto 1fr auto;
+    font-family: var(--font-family-body);
+  }
+
+  fui-email-address {
+    padding-left: 4px;
+  }
+
+  [role="banner"] {
+    grid-area: header;
+    width: 100%;
+  }
+
+  [role="banner"] ul {
+    display: flex;
+    align-items: stretch;
+  }
+
+  [role="banner"] nav {
+    width: 100%;
+  }
+
+  [role="banner"] a {
+    text-decoration: none;
+    padding: 0 2rem;
+  }
+
+  [role="banner"] li:first-child {
+    flex: 1;
+    grid-area: logo;
+  }
+
+  #logo {
+    grid-area: logo;
+  }
+
+  #menu {
+    display: flex;
+  }
+
+  #menu li {
+    display: flex;
+    align-items: stretch;
+  }
+
+  #menu a {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
+</style>
