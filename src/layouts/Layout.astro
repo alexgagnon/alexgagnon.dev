@@ -23,7 +23,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
-    <a href='#main' class='v-on-pin'>Skip to main content</a>
+    <a href='#main' class='v-on-pin d-flex a-center'>Skip to main content</a>
     <header role="banner">
       <div class="a-end" style="padding: 1rem 2rem"><FUIEmailAddress user="xela" domain="aidem.danom" /></div>
       <nav>
@@ -38,7 +38,7 @@ const { title } = Astro.props;
         </ul>
       </nav>
     </header>
-    <main id='main'>
+    <main id="main" class="page">
       <slot />
     </main>
     <footer>
@@ -81,7 +81,8 @@ const { title } = Astro.props;
   }
 
   ul {
-    list-style: none;
+    list-style-type: none;
+    list-style-position: inside;
   }
 
   h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -190,6 +191,22 @@ const { title } = Astro.props;
     gap: var(--gap-responsive);
   }
 
+  .d-block {
+    display: block;
+  }
+
+  .d-inline-block {
+    display: inline-block;
+  }
+
+  .d-flex {
+    display: flex;
+  }
+
+  .d-inline {
+    display: inline;
+  }
+
   p + * {
     margin-top: var(--gap-responsive);
   }
@@ -202,7 +219,7 @@ const { title } = Astro.props;
   main {
     grid-area: main;
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
   }
 
   footer {
@@ -223,7 +240,7 @@ const { title } = Astro.props;
   .v-on-pin {
     position: absolute;
     top: -100vh;
-    left: 0;
+    width: 100%;
   }
 
   .v-on-pin:focus,

@@ -1,14 +1,74 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {FUICard} from '@ferment-ui/web-components';
+
+const skills = {
+  "Specializations": "Front-end development, DevOps,  Cloud architecture",
+  "Languages": "in order of comfort, JS/TS (browser and Node.js), HTML/CSS, Java, Python, C#, Rust, Shell, SQL",
+  "Cloud providers": "Azure",
+  "IaC": "Terraform",
+  "Frameworks and libraries": "Spring, ExpressJS, Lit, ReactJS, VueJS, Astro, 11ty",
+  "APIs": "RESTful and GraphQL",
+  "Databases": "MySQL/PostgreSQL, ElasticSearch, Redis, Oracle",
+  "Containerization": "Docker",
+  "CI/CD": "Azure DevOps, Github Actions",
+  "SCM": "Git",
+  "OSs": "Linux and Windows",
+}
+const otherSkills = [
+  "Agile and Test Driven Development",
+  "Strong people management skills",
+  "Effective when working in a team environment and independently",
+  "Excellent in problem solving and communication",
+  "Quick at learning new concepts",
+];
 ---
 
 <Layout title="Resume">
   <h1>Resume</h1>
+  <details>
+    <summary>Skills</summary>
+    <dl>
+      {Object.entries(skills).map(([key, value]) => (
+        <div>
+          <dt>{key}</dt>
+          <dd>{value}</dd>
+        </div>
+      ))}
+    </dl>
+    <ul>
+      {otherSkills.map(skill => (
+        <li>{skill}</li>
+      ))}
+    </ul>
+  </details>
 </Layout>
 
 <style>
-  main {
-    display: grid;
-    place-content: center;
+  details {
+    margin: 1rem 0;
+  }
+
+  summary {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dt::after {
+    content: ':';
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+
+  dt, dd {
+    display: inline-block;
+  }
+
+  ul {
+    list-style-type: disc;
   }
 </style>
