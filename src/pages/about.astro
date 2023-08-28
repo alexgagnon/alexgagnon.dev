@@ -1,10 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {FUICard} from '@ferment-ui/web-components';
+import {Image} from 'astro:assets';
+import annapurna from '../assets/images/annapurna.jpg';
+import cooking from '../assets/images/cooking.jpg';
+import mac from '../assets/images/mac.jpg';
+import scuba from '../assets/images/scuba.jpg';
+import motorbike from '../assets/images/motorbike.jpg';
+import mulu from '../assets/images/mulu.jpg';
 ---
 
 <Layout title="About">
   <div class='page'>
     <h1>About</h1>
-    <p>
+    <section><FUICard><Image slot="image" src={mulu} width='300' alt="Spelunking in Borneo" /></FUICard></section>
+    <section><FUICard><Image slot="image" loading="lazy" src={scuba} width='300' alt="Scuba diving in Indonesia" /></FUICard></section>
+    <section><FUICard><Image slot="image" loading="lazy" src={cooking} width='300' alt="Cooking in India" /></FUICard></section>
+    <section><FUICard><Image slot="image" loading="lazy" src={motorbike} width='300' alt="Biking in Vietnam" /></FUICard></section>
+    <section><FUICard><Image slot="image" loading="lazy" src={annapurna} width='300' alt="Hiking in Nepal" /></FUICard></section>
+    <section><FUICard><Image slot="image" loading="lazy" src={mac} width='300' alt="The best dog, Mac" /></FUICard></section>
   </div>
 </Layout>
+
+<style>
+  section {
+    min-height: 100vh;
+  }

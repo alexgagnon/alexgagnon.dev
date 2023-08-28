@@ -6,6 +6,19 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const pages = [
+  {
+    title: 'About',
+    href: '/about',
+  },
+  {
+    title: 'Resumé',
+    href: '/resume',
+  }
+];
+
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <!DOCTYPE html>
@@ -13,11 +26,11 @@ const { title } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<title>Alex Gagnon | {title}</title>
-		<meta name="description" content="Personal site for Alex Gagnon">
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<meta name="description" content="Personal site for Alex Gagnon">
     <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap&text=AlexGagnon0123456789|" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=Noto+Serif&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
@@ -28,11 +41,10 @@ const { title } = Astro.props;
       <div class="a-end" style="padding: 1rem 2rem"><FUIEmailAddress user="xela" domain="aidem.danom" /></div>
       <nav>
         <ul>
-          <li id="logo"><a href="/" class='fs-h2 ff-display'>Alex Gagnon</a></li>
+          <li id="logo"><a href="/" class:list={['fs-h2', 'ff-display', {'active': '/' === pathname}]}>Alex Gagnon</a></li>
           <li id="menu">
             <ul>
-              <li><a href="/about">About</a></li>
-              <li><a href="/resume">Resume</a></li>
+              {pages.map(({title, href}) => <li><a href={href} class:list={[{'active': href === pathname}]}>{title}</a></li>)}
             </ul>
           </li>
         </ul>
@@ -42,12 +54,14 @@ const { title } = Astro.props;
       <slot />
     </main>
     <footer>
-      <p class='ff-display fs-h5'>© {new Date().getFullYear()} | Alex Gagnon</p>
+      <p class='fs-h5'>© {new Date().getFullYear()} | Alex Gagnon</p>
     </footer>
 	</body>
 </html>
 <style is:global>
   :root {
+    --spacing-base: 1rem;
+    --spacing-responsive: clamp(var(--spacing-base), 5%, 4rem);
     --font-scale: 1.2;
     --font-scale-start: 1rem;
     --font-size-h6: var(--font-scale-start);
@@ -61,7 +75,7 @@ const { title } = Astro.props;
     --font-family-display: 'Handjet', serif;
     --br: 4px;
     --border: 2px solid currentColor;
-    --gap-responsive: clamp(2rem, 5%, 4rem);
+    --S-card: var(--spacing-responsive);
   }
 
   @media (min-width: 768px) {
@@ -121,6 +135,11 @@ const { title } = Astro.props;
     font-family: var(--font-family-display);
   }
 
+  .subheading {
+    font-size: var(--font-size-h5);
+    font-weight: 700;
+  }
+
   .fs-body {
     font-size: var(--font-size-body);
   }
@@ -147,6 +166,10 @@ const { title } = Astro.props;
 
   .fs-h6 {
     font-size: var(--font-size-h6);
+  }
+
+  h1 + p, .h1 + p, h2 + p, .h2 + p, h3 + p, .h3 + p, h4 + p, .h4 + p, h5 + p, .h5 + p, h6 + p, .h6 + p, p + * {
+    margin-top: var(--spacing-base);
   }
 
   .a-row {
@@ -185,42 +208,63 @@ const { title } = Astro.props;
   .l-center {
     display: grid;
     place-content: center;
+    height: 100%;
+  }
+
+  .g {
+    gap: var(--spacing-base);
   }
 
   .g-responsive {
-    gap: var(--gap-responsive);
+    gap: var(--spacing-responsive);
   }
 
-  .p-static {
+  .mt-responsive {
+    margin-top: var(--spacing-responsive);
+  }
+
+  .mt {
+    margin-top: var(--spacing-base);
+  }
+
+  .mb-responsive {
+    margin-bottom: var(--spacing-responsive);
+  }
+
+  .mb {
+    margin-bottom: var(--spacing-base);
+  }
+
+  .static {
     position: static;
   }
 
-  .p-relative {
+  .relative {
     position: relative;
   }
 
-  .p-absolute {
+  .absolute {
     position: absolute;
   }
 
-  .d-block {
+  .block {
     display: block;
   }
 
-  .d-inline-block {
+  .inline-block {
     display: inline-block;
   }
 
-  .d-flex {
-    display: flex;
-  }
-
-  .d-inline {
+  .inline {
     display: inline;
   }
 
-  p + * {
-    margin-top: var(--gap-responsive);
+  .flex {
+    display: flex;
+  }
+
+  .fd-column {
+    flex-direction: column;
   }
 
   .page {
@@ -232,6 +276,7 @@ const { title } = Astro.props;
     grid-area: main;
     display: flex;
     flex-direction: column;
+    justify-content: stretch;
   }
 
   footer {
@@ -242,11 +287,18 @@ const { title } = Astro.props;
     color: inherit;
   }
 
-  .btn {
+  button, .btn {
     display: inline-block;
     padding: 1rem 2rem;
     border: var(--border);
     text-decoration: none;
+  }
+
+  .float-on-pin:hover,
+  .float-on-pin:focus {
+    box-shadow: 0 0 2px 2px currentColor;
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   }
 
   .v-on-pin {
@@ -303,6 +355,7 @@ const { title } = Astro.props;
   [role="banner"] {
     grid-area: header;
     width: 100%;
+    padding: 0 1rem;
   }
 
   [role="banner"] ul {
@@ -341,5 +394,9 @@ const { title } = Astro.props;
     display: flex;
     align-items: center;
     text-transform: uppercase;
+  }
+
+  a.active {
+    border-bottom: 2px solid currentColor;
   }
 </style>

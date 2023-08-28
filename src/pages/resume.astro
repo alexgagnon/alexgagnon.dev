@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import {FUICard} from '@ferment-ui/web-components';
 
 enum SKILLS {
-  Agile = "Agile",
   Astro = "Astro",
   Azure = "Azure",
   Azure_DevOps = "Azure DevOps",
@@ -16,18 +15,16 @@ enum SKILLS {
   Github_Pages = "Github Pages",
   HTML_CSS = "HTML/CSS",
   Java = "Java",
+  Jenkins = "Jenkins",
   JS_TS = "JS/TS",
   Linux = "Linux",
   Lit = "Lit",
+  MongoDB = "MongoDB",
   Postgres = "Postgres",
   Python = "Python",
   Redis = "Redis",
   REST = "RESTful APIs",
   Rust = "Rust",
-  Shell = "Shell",
-  Spring = "Spring",
-  SQL = "SQL",
-  TDD = "Test Driven Development",
   Terraform = "Terraform",
   VueJS = "VueJS",
   Windows = "Windows",
@@ -35,17 +32,17 @@ enum SKILLS {
 }
 
 const skills = {
-  "Specializations": "Front-end development, DevOps,  Cloud architecture",
-  "Languages": "in order of comfort, JS/TS (browser and Node.js), HTML/CSS, Java, Python, C#, Rust, Shell, SQL",
+  "Specializations": "Front-end development, DevOps,  Cloud Architecture",
+  "Languages": "JS/TS (browser and Node.js), HTML/CSS, Java, Python, C#, Rust, Shell, SQL",
   "Cloud providers": "Azure",
   "IaC": "Terraform",
   "Frameworks and libraries": "Spring, ExpressJS, Lit, ReactJS, VueJS, Astro, 11ty",
-  "APIs": "RESTful and GraphQL",
-  "Databases": "MySQL/PostgreSQL, ElasticSearch, Redis",
+  "APIs": "RESTful, GraphQL",
+  "Databases": "MySQL/PostgreSQL, ElasticSearch, MongoDB, Redis",
   "Containerization": "Docker",
   "CI/CD": "Azure DevOps, Github Actions",
   "SCM": "Git",
-  "OSs": "Linux and Windows",
+  "OSs": "Linux, Windows",
 }
 const otherSkills = [
   "Agile and Test Driven Development",
@@ -61,7 +58,7 @@ const experiences = [
     employer: "Economic and Social Development Canada",
     project: "WCMS",
     date: "2020 - Present",
-    highlights: [],
+    text: "",
     skills: [SKILLS.JS_TS, SKILLS.Lit, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.Spring, SKILLS.Azure_DevOps, SKILLS.Git, SKILLS.Terraform, SKILLS.Docker, SKILLS.Git, SKILLS.Azure_DevOps, SKILLS.Azure, SKILLS.PostgreSQL, SKILLS.Redis, SKILLS.Windows],
     additional: "Azure services used: DNS, Frontdoor, App Gateway, App Service, Functions, Storage Account, Cognitive Search"
   },
@@ -69,25 +66,126 @@ const experiences = [
     title: "Founder & Full Stack Developer",
     employer: "Monad Media",
     date: "2019 - Present",
-    highlights: [],
-    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Lit, SKILLS.Git, SKILLS.Github_Pages, SKILLS.Github_Actions, SKILLS.Cloudflare, SKILLS.Linux, SKILLS.Wordpress]
+    text: "IT agency specializing in web and business services for SMBs and non-profits.",
+    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Lit, SKILLS.Postgres, SKILLS.Git, SKILLS.Github_Pages, SKILLS.Github_Actions, SKILLS.Cloudflare, SKILLS.Wordpress, SKILLS.Linux]
   },
   {
     title: "Technical Advisor",
     employer: "Health Canada",
     project: "Quarantine Case Management System",
     date: "March 2020 - June 2021",
-    highlights: [],
-    skills: [SKILLS.Azure, SKILLS.REST, SKILLS.Terraform, SKILLS.Git],
+    text: "",
+    skills: [SKILLS.Azure, SKILLS.REST, SKILLS.Terraform, SKILLS.C_Sharp, SKILLS.Git],
     additional: "Azure services used: Data Factory, Event Grid, APIM"
   },
   {
     title: "Technical Lead",
     employer: "Health Canada",
-    project: "Drug Submission Tracking System",
+    project: "Health Products and Food",
     date: "April 2018 - June 2021",
-    highlights: [],
-    skills: []
+    text: "",
+    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.C_Sharp, SKILLS.Azure_DevOps, SKILLS.Jenkins, SKILLS.Git, SKILLS.Terraform, SKILLS.Git, SKILLS.PostgreSQL, SKILLS.Linux],
+  },
+  {
+    title: "Senior Programmer Analyst",
+    employer: "Health Canada",
+    project: "Pesticide Management",
+    date: "April 2016 - April 2018",
+    text: "",
+    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.VueJS, SKILLS.MongoDB, SKILLS.Git, SKILLS.Linux],
+  },
+  {
+    title: "Teaching Assistant",
+    employer: "Carleton University",
+    date: "September 2015 - April 2017",
+    text: "Provided assistance to professors teaching programming courses at the undergraduate level. Worked with a team of teaching assistants to lead tutorials and offer assistance during office hours. Courses include Systems Programming, Object-Oriented Programming, and Introduction to Computer Science Levels I and II. Other duties included marking assignments, proctoring exams, and communicating issues to professors. Won Teaching Assistant of the Year award for the School of Computer Science.",
+    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.Python, SKILLS.Linux],
+  }
+];
+
+const openSource = [
+  {
+    title: "Ferment UI",
+    role: "Creator/Maintainer",
+    text: "A collection of web components integrated with a variable's based utility CSS framework, built with Lit and PostCSS.",
+    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Lit, SKILLS.Astro, SKILLS.Github_Pages],
+  },
+  {
+    title: "PostCSS",
+    role: "Contributor",
+    text: "Updated the postcss-custom-media package to support PostCSS@8.",
+    skills: [SKILLS.JS_TS]
+  },
+  {
+    title: "rtrie",
+    role: "Creator/Maintainer",
+    text: "Generalized radix Trie implementation useful for fast lookups in very large collections.",
+    skills: [SKILLS.Python]
+  },
+  {
+    title: "jbzip2",
+    role: "Creator/Maintainer",
+    text: "Fast transformer of ndjson or json arrays (i.e. wikidata), using libjq and libbzip2.",
+    skills: [SKILLS.Rust]
+  }
+];
+
+const education = [
+  {
+    title: "Masters of Computer Science",
+    school: "Carleton University",
+    date: "September 2019 - Present",
+    text: "Specialization in Big Data Management and Machine Learning. Courses include reviewing emerging technologies in retrieval, processing algorithms, storage of big data, security, and knowledge representation. Thesis includes researching the performance of different data structures for storing and retrieving large corpora of entity labels.",
+  },
+  {
+    title: "Bachelor of Computer Science",
+    school: "Carleton University",
+    date: "September 2014 - December 2016",
+    text: "Special interest in AI, algorithms, data structures, and programming paradigms. Completed projects involving analysis of bitcoin blockchain mechanics and networked Java applications (including concepts such as state machines, TDD, and networking)",
+    additional: ["CGPA: 11.1/12", "Dean's Honour List"]
+  },
+  {
+    title: "Bachelor of Science",
+    school: "University of Ottawa",
+    date: "September 2006 - December 2012",
+    text: "Double major in Biology and Psychology.",
+    additional: ["Received merit scholarship for 3rd and 4th year of studies."],
+  }
+];
+
+const certifications = [
+  {
+    title: "Terraform Associate",
+    date: "September 2023 (expected)",
+  },
+  {
+    title: "Azure Administrator",
+    date: "September 2023 (expected)",
+  },
+  {
+    title: "Microsoft Security, Compliance, and Identity Fundamentals",
+    date: "July 2022"
+  },
+  {
+    title: "Professional ScrumMaster, Level I",
+    date: "August 2018"
+  },
+  {
+    title: "Oracle Certified Associate, Java SE 8 Programmer",
+    date: "February 2014"
+  }
+];
+
+const awards = [
+  {
+    title: "Rookie Developer of the Year",
+    employer: "Health Canada",
+    date: "2017"
+  },
+  {
+    title: "Teaching Assistant of the Year",
+    employer: "Carleton University",
+    date: "2016"
   },
 ]
 ---
@@ -95,36 +193,97 @@ const experiences = [
 <Layout title="Resume">
   <div class="page">
     <h1>Resume</h1>
+    <div class='flex g mb'>
+      <button id="open-all">Open all</button>
+      <button id="close-all">Close all</button>
+    </div>
     <details>
-      <summary><h2 class="h4 d-inline">Skills</h2></summary>
-      <dl>
-        {Object.entries(skills).map(([key, value]) => (
-          <div>
-            <dt>{key}</dt>
-            <dd>{value}</dd>
-          </div>
-        ))}
-      </dl>
-      <ul>
-        {otherSkills.map(skill => (
-          <li>{skill}</li>
-        ))}
-      </ul>
+      <summary><h2 class="h4 inline">Skills</h2></summary>
+      <div>
+        <p class="mt mb">Experience is listed in order from left to right.</p>
+        <dl>
+          {Object.entries(skills).map(([key, value]) => (
+            <div class='mb'>
+              <dt>{key}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+        <ul>
+          Additional skills:
+          {otherSkills.map(skill => (
+            <li>{skill}</li>
+          ))}
+        </ul>
+      </div>
     </details>
     <details>
-      <summary><h2 class="h4 d-inline">Experience</h2></summary>
-      <div id='experiences'>
-        {experiences.map(({title, employer, date, highlights, skills, additional}) => (
+      <summary><h2 class="h4 inline">Experience</h2></summary>
+      <div id='experiences' class='flex fd-column g-responsive mt'>
+        {experiences.map(({title, employer, date, text, skills, additional}) => (
           <FUICard>
-            <h3>{title} - {employer}</h3>
+            <h3>{title}</h3>
+            <p class='subheading'>{employer}</p>
             <p>{date}</p>
-            <ul>
-              {highlights.map(highlight => (
-                <li>{highlight}</li>
-              ))}
-            </ul>
-            <p><strong>Skills:</strong>&nbsp;{skills.join(", ")}</p>
+            <p>{text}</p>
+            <p><strong>Technologies:</strong>&nbsp;{skills.join(", ")}</p>
             {additional ?? <p>{additional}</p>}
+          </FUICard>
+        ))}
+      </div>
+    </details>
+    <details>
+      <summary><h2 class="h4 inline">Education</h2></summary>
+      <div class='flex fd-column g-responsive mt'>
+        {education.map(({title, school, date, text, additional}) => (
+          <FUICard>
+            <h3>{title}</h3>
+            <p class='subheading'>{school}</p>
+            <date>{date}</date>
+            <p>{text}</p>
+            {additional && (
+              <ul>
+                {additional.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            )}
+          </FUICard>
+        ))}
+      </div>
+    </details>
+    <details>
+      <summary><h2 class="h4 inline">Open Source</h2></summary>
+      <div>
+        {openSource.map(({title, date, text, skills}) => (
+          <FUICard>
+            <h3>{title}</h3>
+            <p class='subheading'>{date}</p>
+            <p>{text}</p>
+            <p><strong>Technologies:</strong>&nbsp;{skills.join(", ")}</p>
+          </FUICard>
+        ))}
+      </div>
+    </details>
+    <details>
+      <summary><h2 class="h4 inline">Certifications</h2></summary>
+      <div>
+        {certifications.map(({title, date}) => (
+          <FUICard>
+            <h3>{title}</h3>
+            <p>{date}</p>
+          </FUICard>
+        ))}
+      </div>
+    </details>
+    <details>
+      <summary><h2 class="h4 inline">Awards</h2></summary>
+      <div>
+        {awards.map(({title, employer, date}) => (
+          <FUICard>
+            <h3>{title}</h3>
+            <p class='subheading'>{employer}</p>
+            <p>{date}</p>
           </FUICard>
         ))}
       </div>
@@ -134,19 +293,16 @@ const experiences = [
 
 <style>
   details {
-    margin: 1rem 0;
+    margin-bottom: var(--spacing-responsive);
   }
 
   summary {
     cursor: pointer;
+    vertical-align: middle;
   }
 
-  summary::marker {
-    list-style: none;
-  }
-
-  summary:-webkit-details-marker {
-    display: none;
+  h2 {
+    vertical-align: middle;
   }
 
   dt {
@@ -166,10 +322,22 @@ const experiences = [
   ul {
     list-style-type: disc;
   }
-
-  #experiences {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-responsive);
-  }
 </style>
+
+<script>
+  const openAll = document.getElementById('open-all');
+  const closeAll = document.getElementById('close-all');
+  const details = document.querySelectorAll('details');
+
+  openAll.addEventListener('click', () => {
+    details.forEach(detail => {
+      detail.open = true;
+    });
+  });
+
+  closeAll.addEventListener('click', () => {
+    details.forEach(detail => {
+      detail.open = false;
+    });
+  });
+</script>
