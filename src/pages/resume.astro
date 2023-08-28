@@ -254,7 +254,7 @@ const awards = [
     </details>
     <details>
       <summary><h2 class="h4 inline">Open Source</h2></summary>
-      <div>
+      <div class='flex fd-column g-responsive mt'>
         {openSource.map(({title, date, text, skills}) => (
           <FUICard>
             <h3>{title}</h3>
@@ -267,7 +267,7 @@ const awards = [
     </details>
     <details>
       <summary><h2 class="h4 inline">Certifications</h2></summary>
-      <div>
+      <div class='flex fd-column g-responsive mt'>
         {certifications.map(({title, date}) => (
           <FUICard>
             <h3>{title}</h3>
@@ -278,7 +278,7 @@ const awards = [
     </details>
     <details>
       <summary><h2 class="h4 inline">Awards</h2></summary>
-      <div>
+      <div class='flex fd-column g-responsive mt'>
         {awards.map(({title, employer, date}) => (
           <FUICard>
             <h3>{title}</h3>
