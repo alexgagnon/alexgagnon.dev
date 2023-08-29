@@ -1,5 +1,6 @@
 --- 
 import { FUIEmailAddress } from '@ferment-ui/web-components';
+import { createIcons, ExternalLink } from 'lucide';
 
 interface Props {
 	title: string;
@@ -36,15 +37,16 @@ const pathname = new URL(Astro.request.url).pathname;
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
-    <a href='#main' class='v-on-pin d-flex a-center'>Skip to main content</a>
+    <a href='#main' class='v-on-pin a-center'>Skip to main content</a>
     <header role="banner">
-      <div class="a-end" style="padding: 1rem 2rem"><FUIEmailAddress user="xela" domain="aidem.danom" /></div>
+      <div class="a-end ai-center mt"><FUIEmailAddress user="xela" domain="aidem.danom" /><a href="https://github.com/alexgagnon"><i data-lucide="github"></i></a></div>
       <nav>
         <ul>
           <li id="logo"><a href="/" class:list={['fs-h2', 'ff-display', {'active': '/' === pathname}]}>Alex Gagnon</a></li>
           <li id="menu">
-            <ul>
-              {pages.map(({title, href}) => <li><a href={href} class:list={[{'active': href === pathname}]}>{title}</a></li>)}
+            <button id="menu-toggle" class="tt-uppercase" aria-haspopup="true" aria-expanded="false">Menu</button>
+            <ul id="menu-items">
+              {pages.map(({title, href}) => <li><a href={href} class:list={['tappable', {'active': href === pathname}]}>{title}</a></li>)}
             </ul>
           </li>
         </ul>
@@ -58,6 +60,127 @@ const pathname = new URL(Astro.request.url).pathname;
     </footer>
 	</body>
 </html>
+
+<script>
+  import {computePosition, shift} from "@floating-ui/dom";
+  import {createIcons, ExternalLink, Github, Moon, Sun} from 'lucide';
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuItems = document.getElementById('menu-items');
+
+  menuToggle.addEventListener('click', () => {
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', !isExpanded);
+    update();
+  });
+
+  function update() {
+    computePosition(menuToggle, menuItems, {
+      placement: 'bottom-end',
+      middleware: [
+        shift(),
+      ]
+    }).then(({x, y}) => {
+      menuItems.style.left = `${x}px`,
+      menuItems.style.top = `${y}px`
+    });
+  }
+    
+  createIcons({
+    icons: {
+      ExternalLink,
+      Github,
+      Moon,
+      Sun
+    }
+  })
+</script>
+
+<style>
+  body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    grid-template-rows: auto 1fr auto;
+    font-family: var(--font-family-body);
+  }
+
+  [role="banner"] {
+    grid-area: header;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  [role="banner"] ul {
+    display: flex;
+    align-items: stretch;
+  }
+
+  [role="banner"] nav {
+    width: 100%;
+  }
+
+  [role="banner"] a {
+    text-decoration: none;
+    padding: 0 2rem;
+  }
+
+  #logo {
+    grid-area: logo;
+    margin-right: auto;
+  }
+
+  #menu {
+    grid-area: menu;
+    display: flex;
+    position: relative;
+  }
+
+  #menu li {
+    display: flex;
+    align-items: stretch;
+  }
+
+  #menu a {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  #menu-items {
+    display: none;
+    width: max-content;
+    position: absolute;
+    border: 1px solid currentColor;
+  }
+
+  #menu-toggle[aria-expanded=true] + #menu-items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) {
+    #menu-toggle {
+      display: none;
+    }
+
+    #menu-items {
+      display: flex;
+      flex-direction: row !important;
+      position: static;
+      border: 0;
+      
+    }
+  }
+
+  a.active {
+    /* border-bottom: 2px solid currentColor; */
+  }
+</style>
+
 <style is:global>
   :root {
     --spacing-base: 1rem;
@@ -92,6 +215,23 @@ const pathname = new URL(Astro.request.url).pathname;
 
   *:focus {
     outline: 2px dashed currentColor;
+  }
+
+  .funtimes-on-pin:hover,
+  .funtimes-on-pin:focus {
+    background: rgb(131,58,180);
+    background: linear-gradient(56deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    color: white;
+  }
+
+  [class*="-on-"] {
+    transition: 0.2s ease-in-out;
+  }
+
+  .tappable {
+    cursor: pointer;
+    min-height: 44px;
+    min-width: 44px;
   }
 
   ul {
@@ -168,6 +308,10 @@ const pathname = new URL(Astro.request.url).pathname;
     font-size: var(--font-size-h6);
   }
 
+  .tt-uppercase {
+    text-transform: uppercase;
+  }
+
   h1 + p, .h1 + p, h2 + p, .h2 + p, h3 + p, .h3 + p, h4 + p, .h4 + p, h5 + p, .h5 + p, h6 + p, .h6 + p, p + * {
     margin-top: var(--spacing-base);
   }
@@ -192,6 +336,14 @@ const pathname = new URL(Astro.request.url).pathname;
 
   .a-center {
     display: flex;
+    justify-content: center;
+  }
+
+  .ai-center {
+    align-items: center;
+  }
+
+  .jc-center {
     justify-content: center;
   }
 
@@ -259,6 +411,10 @@ const pathname = new URL(Astro.request.url).pathname;
     display: inline;
   }
 
+  .none {
+    display: none
+  }
+
   .flex {
     display: flex;
   }
@@ -267,8 +423,12 @@ const pathname = new URL(Astro.request.url).pathname;
     flex-direction: column;
   }
 
+  .fd-row {
+    flex-direction: row;
+  }
+
   .page {
-    min-width: 6rem;
+    max-width: 65rem;
     padding: 1.5rem clamp(1rem, 5%, 3rem);
   }
 
@@ -287,6 +447,10 @@ const pathname = new URL(Astro.request.url).pathname;
     color: inherit;
   }
 
+  .lucide-external-link {
+    margin-left: 0.5rem;
+  }
+
   button, .btn {
     display: inline-block;
     padding: 1rem 2rem;
@@ -296,9 +460,8 @@ const pathname = new URL(Astro.request.url).pathname;
 
   .float-on-pin:hover,
   .float-on-pin:focus {
-    box-shadow: 0 0 2px 2px currentColor;
-    transform: translateY(-2px);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 4px 2px currentColor;
+    transform: translateY(-4px);
   }
 
   .v-on-pin {
@@ -335,68 +498,17 @@ const pathname = new URL(Astro.request.url).pathname;
     white-space: normal;
   }
 
-</style>
-<style>
-  body {
-    min-height: 100vh;
-    display: grid;
-    grid-template-areas:
-      "header"
-      "main"
-      "footer";
-    grid-template-rows: auto 1fr auto;
-    font-family: var(--font-family-body);
-  }
-
-  fui-email-address {
-    padding-left: 4px;
-  }
-
-  [role="banner"] {
-    grid-area: header;
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  [role="banner"] ul {
-    display: flex;
-    align-items: stretch;
-  }
-
-  [role="banner"] nav {
-    width: 100%;
-  }
-
-  [role="banner"] a {
+  .fancy-button {
+    border: 2px solid black;
+    background: linear-gradient(56deg, white 0%, white 100%);
     text-decoration: none;
-    padding: 0 2rem;
+    padding: 0.5rem 1rem;
+    transition: 0.2s ease-in-out;
   }
 
-  [role="banner"] li:first-child {
-    flex: 1;
-    grid-area: logo;
-  }
-
-  #logo {
-    grid-area: logo;
-  }
-
-  #menu {
-    display: flex;
-  }
-
-  #menu li {
-    display: flex;
-    align-items: stretch;
-  }
-
-  #menu a {
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-  }
-
-  a.active {
-    border-bottom: 2px solid currentColor;
+  .fancy-button:hover,
+  .fancy-button:focus {
+    background: rgb(131,58,180);
+    background: linear-gradient(56deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);;
   }
 </style>

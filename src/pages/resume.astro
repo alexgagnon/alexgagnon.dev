@@ -54,54 +54,68 @@ const otherSkills = [
 
 const experiences = [
   {
-    title: "Technical Lead",
     employer: "Economic and Social Development Canada",
-    project: "WCMS",
-    date: "2020 - Present",
-    text: "",
-    skills: [SKILLS.JS_TS, SKILLS.Lit, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.Spring, SKILLS.Azure_DevOps, SKILLS.Git, SKILLS.Terraform, SKILLS.Docker, SKILLS.Git, SKILLS.Azure_DevOps, SKILLS.Azure, SKILLS.PostgreSQL, SKILLS.Redis, SKILLS.Windows],
-    additional: "Azure services used: DNS, Frontdoor, App Gateway, App Service, Functions, Storage Account, Cognitive Search"
+    roles: [
+      {
+        title: "Technical Lead",
+        project: "WCMS",
+        date: "2020 - Present",
+        text: "Responsibilities include managing a multi-disciplinary team, helping to architect and develop the application, creating SDLC documentation, and reporting to senior management on technical issues and potential solutions. As Team Lead, I tend to the day-to-day needs of my team, assign work tickets, help with debugging and requirement analysis, promote best practices, and complete performance reviews. As technical advisor I work on the project directly, which is a multidimensional and cloud-native application, consisting of many different services provided by the Azure platform (for example, Storage Account, Frontdoor, Application Gateway, App Service, etc.). I lead the development of the DevOps strategy using Azure DevOps as our CI/CD tool, and Terraform for Infrastructure as Code to deploy Azure services in a maintainable fashion. I also work with other technical advisors and representatives from other teams (development teams, Cloud, and IT Security), to ensure that our solution is robust, secure, maintainable, and re-usable by other applications in the future.",
+        skills: [SKILLS.JS_TS, SKILLS.Lit, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.Spring, SKILLS.Git, SKILLS.Terraform, SKILLS.Docker, SKILLS.Git, SKILLS.Azure_DevOps, SKILLS.Azure, SKILLS.PostgreSQL, SKILLS.Redis, SKILLS.Windows],
+        additional: "Azure services used: DNS, Frontdoor, App Gateway, App Service, Functions, Storage Account, Cognitive Search"
+      }
+    ]
   },
   {
-    title: "Founder & Full Stack Developer",
     employer: "Monad Media",
-    date: "2019 - Present",
-    text: "IT agency specializing in web and business services for SMBs and non-profits.",
-    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Lit, SKILLS.Postgres, SKILLS.Git, SKILLS.Github_Pages, SKILLS.Github_Actions, SKILLS.Cloudflare, SKILLS.Wordpress, SKILLS.Linux]
+    roles: [
+      {
+        title: "Founder & Full Stack Developer",
+        date: "2019 - Present",
+        text: "IT agency specializing in web and business services for SMBs and non-profits.",
+        skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Lit, SKILLS.Postgres, SKILLS.Azure, SKILLS.Git, SKILLS.Github_Pages, SKILLS.Github_Actions, SKILLS.Cloudflare, SKILLS.Wordpress, SKILLS.Linux]
+      }
+    ]
   },
   {
-    title: "Technical Advisor",
     employer: "Health Canada",
-    project: "Quarantine Case Management System",
-    date: "March 2020 - June 2021",
-    text: "",
-    skills: [SKILLS.Azure, SKILLS.REST, SKILLS.Terraform, SKILLS.C_Sharp, SKILLS.Git],
-    additional: "Azure services used: Data Factory, Event Grid, APIM"
+    roles: [
+      {
+        title: "Technical Advisor",
+        project: "Quarantine Case Management System",
+        date: "March 2020 - June 2021",
+        text: "Aided with cloud and data architecture and DevOps and led the development of RESTful APIs used to ingest and disseminate confidential COVID-19 related traveller data between numerous stakeholders (CBSA, PHAC, COVID-19 testing laboratories, provincial/territorial health ministries). QCMS was one of the highest priority activities for the organization, and as such had extremely tight deadlines and oversight from senior management. Required multiple standups/meetings daily with different stakeholders for requirement gathering, communicating API schemas between parties, and discussing cloud service performance and security.",
+        skills: [SKILLS.Azure, SKILLS.REST, SKILLS.Terraform, SKILLS.C_Sharp, SKILLS.Git],
+        additional: "Azure services used: Data Factory, Event Grid, APIM",
+      },
+      {
+        title: "Technical Lead",
+        project: "Health Products and Food",
+        date: "April 2018 - June 2021",
+        text: "Led a team of up to 8 developers in developing and maintaining applications using various technologies such as HTML, CSS, JavaScript, Java, Struts, Spring, C#, .NET, Electron, OracleDB, Gradle, Docker, Jenkins, SonarQube, and Git/Github in an Agile environment. Developed and/or maintained a portfolio of 20+ web applications and RESTful APIs, where duties involve communicating with clients, architecting and developing solutions and DevOps strategies, analyzing requirements, providing recommendations to senior management, creating SDLC documentation, assigning and tracking progress using tickets, and leading bi-weekly stand-ups. A notable example of an application the team developed is Small Business Registry, a distributed application consisting of two websites, APIs, ETLs, and databases across multiple lines of business, whose architecture was used as a baseline for subsequent applications. Also acted as a mentor for students and new developers, helping onboard them to the team and becoming more proficient with advanced programming concepts and best practices.",
+        skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.C_Sharp, SKILLS.Azure_DevOps, SKILLS.Jenkins, SKILLS.Git, SKILLS.Terraform, SKILLS.Git, SKILLS.PostgreSQL, SKILLS.Linux],
+      },
+      {
+        title: "Senior Programmer Analyst",
+        project: "Pesticide Management",
+        date: "April 2016 - April 2018",
+        text: "Created software that aids international pesticide production companies and regulatory bodies in the transmission of product information using a globally standardized specification managed by the OECD. The technologies used were Electron, AngularJS/VueJS, MongoDB, HTML, and CSS. Led the development of a VueJS design system that was re-used throughout the application. Developed RESTful APIs meeting Treasury Board of Canada Web API standards for data on pesticides using various technologies including Tomcat, Java (Jersey), C# (.NET), and Oracle DB. Developed the user-facing web application for pesticide information using JavaScript, HTML, CSS, and jQuery. ",
+        skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.VueJS, SKILLS.MongoDB, SKILLS.Git, SKILLS.Linux],
+      }
+    ]
   },
   {
-    title: "Technical Lead",
-    employer: "Health Canada",
-    project: "Health Products and Food",
-    date: "April 2018 - June 2021",
-    text: "",
-    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.C_Sharp, SKILLS.Azure_DevOps, SKILLS.Jenkins, SKILLS.Git, SKILLS.Terraform, SKILLS.Git, SKILLS.PostgreSQL, SKILLS.Linux],
-  },
-  {
-    title: "Senior Programmer Analyst",
-    employer: "Health Canada",
-    project: "Pesticide Management",
-    date: "April 2016 - April 2018",
-    text: "",
-    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.VueJS, SKILLS.MongoDB, SKILLS.Git, SKILLS.Linux],
-  },
-  {
-    title: "Teaching Assistant",
     employer: "Carleton University",
-    date: "September 2015 - April 2017",
-    text: "Provided assistance to professors teaching programming courses at the undergraduate level. Worked with a team of teaching assistants to lead tutorials and offer assistance during office hours. Courses include Systems Programming, Object-Oriented Programming, and Introduction to Computer Science Levels I and II. Other duties included marking assignments, proctoring exams, and communicating issues to professors. Won Teaching Assistant of the Year award for the School of Computer Science.",
-    skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.Python, SKILLS.Linux],
+    roles: [
+      {
+        title: "Teaching Assistant",
+        date: "September 2015 - April 2017",
+        text: "Provided assistance to professors teaching programming courses at the undergraduate level. Worked with a team of teaching assistants to lead tutorials and offer assistance during office hours. Courses include Systems Programming, Object-Oriented Programming, and Introduction to Computer Science Levels I and II. Other duties included marking assignments, proctoring exams, and communicating issues to professors. Won Teaching Assistant of the Year award for the School of Computer Science.",
+        skills: [SKILLS.JS_TS, SKILLS.HTML_CSS, SKILLS.Java, SKILLS.Python, SKILLS.Linux],
+      }
+    ]
   }
-];
+]
 
 const openSource = [
   {
@@ -141,15 +155,15 @@ const education = [
     title: "Bachelor of Computer Science",
     school: "Carleton University",
     date: "September 2014 - December 2016",
-    text: "Special interest in AI, algorithms, data structures, and programming paradigms. Completed projects involving analysis of bitcoin blockchain mechanics and networked Java applications (including concepts such as state machines, TDD, and networking)",
-    additional: ["CGPA: 11.1/12", "Dean's Honour List"]
+    text: "Focus in AI, algorithms, data structures, and programming paradigms. Completed projects involving analysis of bitcoin blockchain mechanics and networked Java applications (including concepts such as state machines, TDD, and networking)",
+    highlights: ["CGPA: 11.1/12", "Dean's Honour List"]
   },
   {
     title: "Bachelor of Science",
     school: "University of Ottawa",
     date: "September 2006 - December 2012",
     text: "Double major in Biology and Psychology.",
-    additional: ["Received merit scholarship for 3rd and 4th year of studies."],
+    highlights: ["Received merit scholarship for 3rd and 4th year of studies."],
   }
 ];
 
@@ -200,7 +214,7 @@ const awards = [
     <details>
       <summary><h2 class="h4 inline">Skills</h2></summary>
       <div>
-        <p class="mt mb">Experience is listed in order from left to right.</p>
+        <p class="mt mb">Listed in order of experience from left to right.</p>
         <dl>
           {Object.entries(skills).map(([key, value]) => (
             <div class='mb'>
@@ -220,30 +234,36 @@ const awards = [
     <details>
       <summary><h2 class="h4 inline">Experience</h2></summary>
       <div id='experiences' class='flex fd-column g-responsive mt'>
-        {experiences.map(({title, employer, date, text, skills, additional}) => (
+        {experiences.map(({employer, roles}) => 
           <FUICard>
-            <h3>{title}</h3>
-            <p class='subheading'>{employer}</p>
-            <p>{date}</p>
-            <p>{text}</p>
-            <p><strong>Technologies:</strong>&nbsp;{skills.join(", ")}</p>
-            {additional ?? <p>{additional}</p>}
+            <h3>{employer}</h3>
+            {roles.map(({title, project, date, text, highlights, skills, additional}) => <>
+              <p class='subheading'>{title}</p>
+              {project && <p>{project}</p>}
+              <p>{date}</p>
+              <p>{text}</p>
+              {highlights && <ul>
+                highlights.map(highlight => <li>{highlight}</li>)
+              </ul>}
+              <p><strong>Technologies:</strong>&nbsp;{skills.join(", ")}</p>
+              {additional ?? <p>{additional}</p>}
+            </>)}
           </FUICard>
-        ))}
+        )}
       </div>
     </details>
     <details>
       <summary><h2 class="h4 inline">Education</h2></summary>
       <div class='flex fd-column g-responsive mt'>
-        {education.map(({title, school, date, text, additional}) => (
+        {education.map(({title, school, date, text, highlights, additional}) => (
           <FUICard>
             <h3>{title}</h3>
             <p class='subheading'>{school}</p>
             <date>{date}</date>
             <p>{text}</p>
-            {additional && (
+            {highlights && (
               <ul>
-                {additional.map(item => (
+                {highlights.map(item => (
                   <li>{item}</li>
                 ))}
               </ul>
