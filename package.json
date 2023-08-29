@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "fonts": "glyphhanger --whitelist=RresuméAaboutMm --formats=woff2 --subset=*.tff"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
@@ -16,11 +17,11 @@
   },
   "dependencies": {
     "@astrojs/lit": "^2.1.1",
+    "@astrojs/sitemap": "^2.0.2",
     "@ferment-ui/web-components": "^0.0.1-alpha.2",
     "@floating-ui/dom": "^1.5.1",
     "@webcomponents/template-shadowroot": "^0.2.1",
     "astro": "^3.0.0-rc.10",
-    "dayjs": "^1.11.9",
     "lit": "^2.8.0",
     "lucide": "^0.271.0"
   }

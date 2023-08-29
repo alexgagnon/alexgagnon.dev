@@ -13,21 +13,27 @@ import mulu from '../assets/images/mulu.jpg';
 <Layout title="About">
   <div class='page'>
     <h1>About</h1>
-    <section>
-      <FUICard>
-        <Image slot="image" src={mulu} width='300' alt="Spelunking in Borneo" />
-        <p slot="body">Heyyyy</p>
-      </FUICard>
-    </section>
-    <section><FUICard><Image slot="image" loading="lazy" src={scuba} width='300' alt="Scuba diving in Indonesia" /></FUICard></section>
-    <section><FUICard><Image slot="image" loading="lazy" src={cooking} width='300' alt="Cooking in India" /></FUICard></section>
-    <section><FUICard><Image slot="image" loading="lazy" src={motorbike} width='300' alt="Biking in Vietnam" /></FUICard></section>
-    <section><FUICard><Image slot="image" loading="lazy" src={annapurna} width='300' alt="Hiking in Nepal" /></FUICard></section>
-    <section><FUICard><Image slot="image" loading="lazy" src={mac} width='300' alt="The best dog, Mac" /></FUICard></section>
+    <ul>
+      <li>I speak English and French, and would love to learn more languages (looking at you, Spanish and Mandarin).</li>
+      <li>I try to travel as much as possible. I'm always looking for new places to explore and foods to try.</li>
+      <li>I've got my Kindle with me wherever I go.</li>
+      <li>I'm a BIG fan of the outdoors. Hiking, camping, scuba diving are my faves.</li>
+      <li>My passion is building things, so when it's not websites it's things like doing renovations and breweing beer.</li>
+    </ul>
+    <section id="images" class='mt'>
+      <Image slot="image" src={mulu} width='300' alt="Spelunking in Borneo" />
+      <Image slot="image" src={scuba} width='300' alt="Scuba diving in Indonesia" />
+      <Image slot="image" src={cooking} width='300' alt="Cooking in India" />
+      <Image slot="image" src={mac} width='300' alt="The best dog, Mac" />
+      <Image slot="image" src={annapurna} width='300' alt="Hiking in Nepal" />
+      <Image slot="image" src={motorbike} width='300' alt="Biking in Vietnam" />
   </div>
 </Layout>
 
 <style>
-  section {
-    min-height: 100vh;
+  #images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
+</style>
