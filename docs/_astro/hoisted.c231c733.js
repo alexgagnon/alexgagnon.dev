@@ -1,1 +1,0 @@
-import"./hoisted.3afa2197.js";const t=document.getElementById("open-all"),n=document.getElementById("close-all"),l=document.querySelectorAll("details");t.addEventListener("click",()=>{l.forEach(e=>{e.open=!0})});n.addEventListener("click",()=>{l.forEach(e=>{e.open=!1})});

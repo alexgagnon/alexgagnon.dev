@@ -7,6 +7,6 @@ export default defineConfig({
   // experimental: {
   //   assets: true
   // },
-  integrations: [lit()],
-  outDir: './docs'
+  site: "https://alexgagnon.dev",
+  integrations: [lit()]
 });
