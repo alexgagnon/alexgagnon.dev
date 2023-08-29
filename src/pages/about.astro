@@ -13,7 +13,12 @@ import mulu from '../assets/images/mulu.jpg';
 <Layout title="About">
   <div class='page'>
     <h1>About</h1>
-    <section><FUICard><Image slot="image" src={mulu} width='300' alt="Spelunking in Borneo" /></FUICard></section>
+    <section>
+      <FUICard>
+        <Image slot="image" src={mulu} width='300' alt="Spelunking in Borneo" />
+        <p slot="body">Heyyyy</p>
+      </FUICard>
+    </section>
     <section><FUICard><Image slot="image" loading="lazy" src={scuba} width='300' alt="Scuba diving in Indonesia" /></FUICard></section>
     <section><FUICard><Image slot="image" loading="lazy" src={cooking} width='300' alt="Cooking in India" /></FUICard></section>
     <section><FUICard><Image slot="image" loading="lazy" src={motorbike} width='300' alt="Biking in Vietnam" /></FUICard></section>
