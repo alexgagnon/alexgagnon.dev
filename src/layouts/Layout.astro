@@ -32,6 +32,7 @@ const pathname = new URL(Astro.request.url).pathname;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content="Personal site for Alex Gagnon">
 		<meta name="generator" content={Astro.generator} />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=Handjet&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <slot name='styles'></slot>
 	</head>
 	<body>
@@ -63,19 +64,19 @@ const pathname = new URL(Astro.request.url).pathname;
   import {computePosition, shift} from "@floating-ui/dom";
   import {createIcons, ExternalLink, Github} from 'lucide';
 
-  const fonts = [
-    new FontFace('Handjet', 'url(https://fonts.gstatic.com/l/font?kit=oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHTmaUkA0AElwNVJxzsVdN-7pJIJXYhHI3yIY&skey=4a9faa4e98ec440b&v=v19) format("woff2")', {style: 'normal', weight: '400'}),
-    new FontFace('Bricolage Grotesque', 'url(https://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvRvi-Molsg.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRage: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD'}),
-    new FontFace('Playfair Display', 'url(https://fonts.gstatic.com/s/playfairdisplay/v36/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA-Q.woff2) format("woff2")', {style: 'italic', weight: '400'}),
-  ];
+  // const fonts = [
+  //   new FontFace('Handjet', 'url(https://fonts.gstatic.com/s/handjet/v19/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHTmaYkImEQ.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRage: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD'}),
+  //   new FontFace('Bricolage Grotesque', 'url(https://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvRvi-Molsg.woff2) format("woff2")'),
+  //   new FontFace('Playfair Display', 'url(https://fonts.gstatic.com/s/playfairdisplay/v36/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA-Q.woff2) format("woff2")'),
+  // ];
 
-  document.fonts.add(...fonts);
+  // document.fonts.add(...fonts);
 
-  Promise.all(fonts.map(font => font.load()))
-    .then(() => {
-      document.documentElement.classList.add('fonts-loaded');
-    })
-    .catch(console.error);
+  // Promise.all(fonts.map(font => font.load()))
+  //   .then(() => {
+  //     document.documentElement.classList.add('fonts-loaded');
+  //   })
+  //   .catch(console.error);
 
   const menuToggle = document.getElementById('menu-toggle');
   const menuItems = document.getElementById('menu-items');
@@ -234,13 +235,6 @@ const pathname = new URL(Astro.request.url).pathname;
 
   *:focus {
     outline: 2px dashed currentColor;
-  }
-
-  .funtimes-on-pin:hover,
-  .funtimes-on-pin:focus {
-    background: rgb(131,58,180);
-    background: linear-gradient(56deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
-    color: white;
   }
 
   [class*="-on-"] {
