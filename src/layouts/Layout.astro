@@ -28,41 +28,9 @@ const pathname = new URL(Astro.request.url).pathname;
 		<meta charset="UTF-8" />
 		<title>Alex Gagnon | {title}</title>
 		<meta name="viewport" content="width=device-width" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content="Personal site for Alex Gagnon">
 		<meta name="generator" content={Astro.generator} />
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap&text=AlexGagno" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"> -->
-    <!-- <style>
-      @font-face {
-        font-family: 'Handjet';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/l/font?kit=oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHTmaUkA0HTgGZgQil50Fdw&skey=4a9faa4e98ec440b&v=v19) format('woff2');
-        unicode-range:
-      }
-
-      @font-face {
-        font-family: 'Bricolage Grotesque';
-        font-style: normal;
-        font-weight: 400;
-        font-stretch: 100%;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvRvi-Molsg.woff2) format('woff2');
-        unicode-range: U+20-7E,U+C9,U+E9;
-      }
-
-      @font-face {
-        font-family: 'Playfair Display';
-        font-style: italic;
-        font-weight: 400;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/s/playfairdisplay/v36/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA-Q.woff2) format('woff2');
-        unicode-range: U+20-7E,U+C9,U+E9;
-      }
-    </style> -->
     <slot name='styles'></slot>
 	</head>
 	<body>
@@ -95,15 +63,16 @@ const pathname = new URL(Astro.request.url).pathname;
   import {createIcons, ExternalLink, Github} from 'lucide';
 
   const fonts = [
-    new FontFace('Handjet', 'url(https://fonts.gstatic.com/l/font?kit=oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHTmaUkA0HTgGZgQil50Fdw&skey=4a9faa4e98ec440b&v=v19) format("woff2")', {style: 'normal', weight: '400', unicodeRage: 'U+41,U+47,U+61,U+65,U+67,U+6C,U+6E,U+6F,U+78'}),
-    new FontFace('Bricolage Grotesque', 'url(https://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvRvi-Molsg.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
-    new FontFace('Playfair Display', 'url(https://fonts.gstatic.com/s/playfairdisplay/v36/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA-Q.woff2) format("woff2")', {style: 'italic', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
+    new FontFace('Playfair Display', 'url(fonts/PlayfairDisplay-Italic-subset.woff2) format("woff2")'),
+    new FontFace('Bricolage Grotesque', 'url(fonts/BricolageGrotesque-Regular-subset.woff2) format("woff2")'),
+    new FontFace('Handjet', 'url(fonts/Handjet-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRage: 'U+41,U+47,U+61,U+65,U+67,U+6C,U+6E,U+6F,U+78'}),
   ];
 
-  document.fonts.add(...fonts);
+  fonts.forEach(font => document.fonts.add(font));
 
-  Promise.all(fonts.map(font => font.load()))
-    .then(() => {
+  Promise.allSettled(fonts.map(font => font.load()))
+    .then(fonts => {
+      console.log(fonts);
       document.documentElement.classList.add('fonts-loaded');
     })
     .catch(console.error);
@@ -237,9 +206,6 @@ const pathname = new URL(Astro.request.url).pathname;
     --font-size-h3: calc(var(--font-scale) * var(--font-size-h4));
     --font-size-h2: calc(var(--font-scale) * var(--font-size-h3));
     --font-size-h1: calc(var(--font-scale) * var(--font-size-h2));
-    /* --font-family-body: 'Bricolage Grotesque', sans-serif;
-    --font-family-heading: 'Playfair Display', serif;
-    --font-family-display: 'Handjet', sans-serif; */
     --font-family-body: sans-serif;
     --font-family-heading: serif;
     --font-family-display: serif;
@@ -251,7 +217,7 @@ const pathname = new URL(Astro.request.url).pathname;
   .fonts-loaded {
     --font-family-body: 'Bricolage Grotesque', sans-serif;
     --font-family-heading: 'Playfair Display', serif;
-    --font-family-display: 'Handjet', sans-serif;
+    --font-family-display: 'Handjet', serif;
   }
 
   @media (min-width: 768px) {
