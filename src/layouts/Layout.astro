@@ -63,9 +63,9 @@ const pathname = new URL(Astro.request.url).pathname;
   import {createIcons, ExternalLink, Github} from 'lucide';
 
   const fonts = [
-    new FontFace('Playfair Display', 'url(fonts/PlayfairDisplay-Italic-subset.woff2) format("woff2")'),
-    new FontFace('Bricolage Grotesque', 'url(fonts/BricolageGrotesque-Regular-subset.woff2) format("woff2")'),
-    new FontFace('Handjet', 'url(fonts/Handjet-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRage: 'U+41,U+47,U+61,U+65,U+67,U+6C,U+6E,U+6F,U+78'}),
+    new FontFace('Playfair Display', 'url(fonts/PlayfairDisplay-Italic-subset.woff2) format("woff2")', {style: 'italic', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
+    new FontFace('Bricolage Grotesque', 'url(fonts/BricolageGrotesque-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
+    new FontFace('Handjet', 'url(fonts/Handjet-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+41,U+47,U+61,U+65,U+67,U+6C,U+6E,U+6F,U+78'}),
   ];
 
   fonts.forEach(font => document.fonts.add(font));
