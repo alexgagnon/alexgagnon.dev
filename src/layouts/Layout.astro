@@ -41,6 +41,7 @@ const pathname = new URL(Astro.request.url).pathname;
         font-weight: 400;
         font-display: swap;
         src: url(https://fonts.gstatic.com/l/font?kit=oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHTmaUkA0HTgGZgQil50Fdw&skey=4a9faa4e98ec440b&v=v19) format('woff2');
+        unicode-range:
       }
 
       @font-face {
@@ -93,19 +94,19 @@ const pathname = new URL(Astro.request.url).pathname;
   import {computePosition, shift} from "@floating-ui/dom";
   import {createIcons, ExternalLink, Github} from 'lucide';
 
-  // const fonts = [
-  //   new FontFace('Handjet', 'url(https://fonts.gstatic.com/s/handjet/v19/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHTmaYkImEQ.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRage: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD'}),
-  //   new FontFace('Bricolage Grotesque', 'url(https://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvRvi-Molsg.woff2) format("woff2")'),
-  //   new FontFace('Playfair Display', 'url(https://fonts.gstatic.com/s/playfairdisplay/v36/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA-Q.woff2) format("woff2")'),
-  // ];
+  const fonts = [
+    new FontFace('Handjet', 'url(https://fonts.gstatic.com/l/font?kit=oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHTmaUkA0HTgGZgQil50Fdw&skey=4a9faa4e98ec440b&v=v19) format("woff2")', {style: 'normal', weight: '400', unicodeRage: 'U+41,U+47,U+61,U+65,U+67,U+6C,U+6E,U+6F,U+78'}),
+    new FontFace('Bricolage Grotesque', 'url(https://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvRvi-Molsg.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
+    new FontFace('Playfair Display', 'url(https://fonts.gstatic.com/s/playfairdisplay/v36/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA-Q.woff2) format("woff2")', {style: 'italic', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
+  ];
 
-  // document.fonts.add(...fonts);
+  document.fonts.add(...fonts);
 
-  // Promise.all(fonts.map(font => font.load()))
-  //   .then(() => {
-  //     document.documentElement.classList.add('fonts-loaded');
-  //   })
-  //   .catch(console.error);
+  Promise.all(fonts.map(font => font.load()))
+    .then(() => {
+      document.documentElement.classList.add('fonts-loaded');
+    })
+    .catch(console.error);
 
   const menuToggle = document.getElementById('menu-toggle');
   const menuItems = document.getElementById('menu-items');
@@ -236,19 +237,22 @@ const pathname = new URL(Astro.request.url).pathname;
     --font-size-h3: calc(var(--font-scale) * var(--font-size-h4));
     --font-size-h2: calc(var(--font-scale) * var(--font-size-h3));
     --font-size-h1: calc(var(--font-scale) * var(--font-size-h2));
-    --font-family-body: 'Bricolage Grotesque', sans-serif;
+    /* --font-family-body: 'Bricolage Grotesque', sans-serif;
     --font-family-heading: 'Playfair Display', serif;
-    --font-family-display: 'Handjet', sans-serif;
+    --font-family-display: 'Handjet', sans-serif; */
+    --font-family-body: sans-serif;
+    --font-family-heading: serif;
+    --font-family-display: serif;
     --br: 4px;
     --border: 2px solid currentColor;
     --S-card: var(--spacing-responsive);
   }
 
-  /* .fonts-loaded {
+  .fonts-loaded {
     --font-family-body: 'Bricolage Grotesque', sans-serif;
     --font-family-heading: 'Playfair Display', serif;
     --font-family-display: 'Handjet', sans-serif;
-  } */
+  }
 
   @media (min-width: 768px) {
     :root {
