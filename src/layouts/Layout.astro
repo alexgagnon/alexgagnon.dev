@@ -31,7 +31,7 @@ const pathname = new URL(Astro.request.url).pathname;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content="Personal site for Alex Gagnon">
-    <style>
+    <style is:global>
       @font-face {
         font-family: 'Handjet';
         font-style: normal;
@@ -64,7 +64,7 @@ const pathname = new URL(Astro.request.url).pathname;
 	<body>
     <a href='#main' class='v-on-pin a-center'>Skip to main content</a>
     <header role="banner">
-      <div class="a-end ai-center mt mb"><FUIEmailAddress user="xela" domain="aidem.danom" /><a href="https://github.com/alexgagnon"><i data-lucide="github" class='tappable'></i><span class="sr-only">Github</span></a></div>
+      <div class="a-end ai-center mt mb"><FUIEmailAddress label="Say hi" user="xela" domain="aidem.danom" /><a href="https://github.com/alexgagnon"><i data-lucide="github" class='tappable'></i><span class="sr-only">Github</span></a></div>
       <nav>
         <ul>
           <li id="logo"><a href="/" class:list={['fs-h2', 'ff-display', {'active': '/' === pathname}]}>Alex Gagnon</a></li>
