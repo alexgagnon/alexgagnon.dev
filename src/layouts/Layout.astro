@@ -34,8 +34,8 @@ const pathname = new URL(Astro.request.url).pathname;
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
 
-      // this 'hides' the body until the fonts are loaded so there's no FOUC
-      document.documentElement.classList.add('no-fonts-loaded');
+      // this 'hides' the document until things are loaded to reduce CLS
+      document.documentElement.classList.add('v-hidden');
 
       const fonts = [
         new FontFace('Playfair Display', 'url(/fonts/PlayfairDisplay-Italic-subset.woff2) format("woff2")', {style: 'italic', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
@@ -45,12 +45,20 @@ const pathname = new URL(Astro.request.url).pathname;
 
       fonts.forEach(font => document.fonts.add(font));
 
-      Promise.allSettled(fonts.map(font => font.load()))
+      const isFontsLoaded = Promise.allSettled(fonts.map(font => font.load()))
         .then(fonts => {
           document.documentElement.classList.add('fonts-loaded');
-          document.documentElement.classList.remove('no-fonts-loaded');
         })
         .catch(console.error);
+
+      const isDCL = new Promise(function(resolve) {
+        document.addEventListener("DOMContentLoaded", resolve, false);
+      })
+
+      // wait for both fonts and DOM content to be loaded to reduce CLS
+      Promise.all([isFontsLoaded, isDCL]).then(function() {
+        document.documentElement.classList.remove('v-hidden');
+      });
     </script>
 		<meta name="generator" content={Astro.generator} />
     <slot name='styles'></slot>
@@ -511,6 +519,10 @@ const pathname = new URL(Astro.request.url).pathname;
   .float-on-pin:focus {
     box-shadow: 0 4px 4px 2px currentColor;
     transform: translateY(-4px);
+  }
+
+  .v-hidden {
+    visibility: hidden;
   }
 
   .v-on-pin {
