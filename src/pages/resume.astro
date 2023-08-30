@@ -212,7 +212,7 @@ const awards = [
       <button id="open-all">Open all</button>
       <button id="close-all">Close all</button>
     </div>
-    <details>
+    <details open>
       <summary><h2 class="fs-h4 ff-body inline">Skills</h2></summary>
       <div>
         <p class="mt mb">Listed in order of experience from left to right.</p>
@@ -232,7 +232,7 @@ const awards = [
         </ul>
       </div>
     </details>
-    <details>
+    <details open>
       <summary><h2 class="fs-h4 ff-body inline">Experience</h2></summary>
       <div id='experiences' class='flex fd-column g-responsive mt'>
         {experiences.map(({employer, roles}) => 
@@ -253,7 +253,7 @@ const awards = [
         )}
       </div>
     </details>
-    <details>
+    <details open>
       <summary><h2 class="fs-h4 ff-body inline">Education</h2></summary>
       <div class='flex fd-column g-responsive mt'>
         {education.map(({title, school, date, text, highlights, additional}) => (
@@ -273,7 +273,7 @@ const awards = [
         ))}
       </div>
     </details>
-    <details>
+    <details open>
       <summary><h2 class="fs-h4 ff-body inline">Open Source</h2></summary>
       <div class='flex fd-column g-responsive mt'>
         {openSource.map(({title, date, text, skills}) => (
@@ -286,7 +286,7 @@ const awards = [
         ))}
       </div>
     </details>
-    <details>
+    <details open>
       <summary><h2 class="fs-h4 ff-body inline">Certifications</h2></summary>
       <div class='flex fd-column g-responsive mt'>
         {certifications.map(({title, date}) => (
@@ -297,7 +297,7 @@ const awards = [
         ))}
       </div>
     </details>
-    <details>
+    <details open>
       <summary><h2 class="fs-h4 ff-body inline">Awards</h2></summary>
       <div class='flex fd-column g-responsive mt'>
         {awards.map(({title, employer, date}) => (
