@@ -23,7 +23,7 @@ const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class='no-js no-fonts-loaded'>
 	<head>
 		<meta charset="UTF-8" />
 		<title>Alex Gagnon | {title}</title>
@@ -31,6 +31,12 @@ const pathname = new URL(Astro.request.url).pathname;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content="Personal site for Alex Gagnon">
     <script is:inline>
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+
+      // this 'hides' the body until the fonts are loaded so there's no FOUC
+      document.documentElement.classList.add('no-fonts-loaded');
+
       const fonts = [
         new FontFace('Playfair Display', 'url(/fonts/PlayfairDisplay-Italic-subset.woff2) format("woff2")', {style: 'italic', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
         new FontFace('Bricolage Grotesque', 'url(/fonts/BricolageGrotesque-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
@@ -42,6 +48,7 @@ const pathname = new URL(Astro.request.url).pathname;
       Promise.allSettled(fonts.map(font => font.load()))
         .then(fonts => {
           document.documentElement.classList.add('fonts-loaded');
+          document.documentElement.classList.remove('no-fonts-loaded');
         })
         .catch(console.error);
     </script>
@@ -212,6 +219,10 @@ const pathname = new URL(Astro.request.url).pathname;
     --br: 4px;
     --border: 2px solid currentColor;
     --S-card: var(--spacing-responsive);
+  }
+
+  .no-fonts-loaded body {
+    visibility: hidden;
   }
 
   .fonts-loaded {
