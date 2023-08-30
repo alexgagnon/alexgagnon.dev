@@ -8,25 +8,13 @@
     "dev": "wireit",
     "build": "wireit",
     "preview": "wireit",
-    "fonts": "wireit",
+    "fonts": "./fonts.sh",
     "test": "wireit",
     "test:regression": "wireit"
   },
   "wireit": {
-    "fonts": {
-      "command": "./fonts.sh",
-      "files": [
-        "fonts"
-      ],
-      "output": [
-        "public/fonts"
-      ]
-    },
     "dev": {
       "command": "astro dev",
-      "dependencies": [
-        "fonts"
-      ],
       "files": [
         "public/**/*",
         "src/**/*"
