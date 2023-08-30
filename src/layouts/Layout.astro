@@ -30,6 +30,21 @@ const pathname = new URL(Astro.request.url).pathname;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content="Personal site for Alex Gagnon">
+    <script is:inline>
+      const fonts = [
+        new FontFace('Playfair Display', 'url(/fonts/PlayfairDisplay-Italic-subset.woff2) format("woff2")', {style: 'italic', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
+        new FontFace('Bricolage Grotesque', 'url(/fonts/BricolageGrotesque-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
+        new FontFace('Handjet', 'url(/fonts/Handjet-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+41,U+47,U+61,U+65,U+67,U+6C,U+6E,U+6F,U+78'}),
+      ];
+
+      fonts.forEach(font => document.fonts.add(font));
+
+      Promise.allSettled(fonts.map(font => font.load()))
+        .then(fonts => {
+          document.documentElement.classList.add('fonts-loaded');
+        })
+        .catch(console.error);
+    </script>
 		<meta name="generator" content={Astro.generator} />
     <slot name='styles'></slot>
 	</head>
@@ -61,21 +76,6 @@ const pathname = new URL(Astro.request.url).pathname;
 <script>
   import {computePosition, shift} from "@floating-ui/dom";
   import {createIcons, ExternalLink, Github} from 'lucide';
-
-  const fonts = [
-    new FontFace('Playfair Display', 'url(/fonts/PlayfairDisplay-Italic-subset.woff2) format("woff2")', {style: 'italic', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
-    new FontFace('Bricolage Grotesque', 'url(/fonts/BricolageGrotesque-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
-    new FontFace('Handjet', 'url(/fonts/Handjet-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+41,U+47,U+61,U+65,U+67,U+6C,U+6E,U+6F,U+78'}),
-  ];
-
-  fonts.forEach(font => document.fonts.add(font));
-
-  Promise.allSettled(fonts.map(font => font.load()))
-    .then(fonts => {
-      console.log(fonts);
-      document.documentElement.classList.add('fonts-loaded');
-    })
-    .catch(console.error);
 
   const menuToggle = document.getElementById('menu-toggle');
   const menuItems = document.getElementById('menu-items');
