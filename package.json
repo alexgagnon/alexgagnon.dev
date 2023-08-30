@@ -4,21 +4,72 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "fonts": "./fonts.sh"
+    "prepare": "husky install",
+    "dev": "wireit",
+    "build": "wireit",
+    "preview": "wireit",
+    "fonts": "wireit",
+    "test": "wireit",
+    "test:regression": "wireit"
+  },
+  "wireit": {
+    "fonts": {
+      "command": "./fonts.sh",
+      "files": [
+        "fonts"
+      ],
+      "output": [
+        "public/fonts"
+      ]
+    },
+    "dev": {
+      "command": "astro dev",
+      "dependencies": [
+        "fonts"
+      ],
+      "files": [
+        "public/**/*",
+        "src/**/*"
+      ]
+    },
+    "build": {
+      "command": "astro build",
+      "files": [
+        "public/**/*",
+        "src/**/*"
+      ],
+      "output": [
+        "dist"
+      ]
+    },
+    "preview": {
+      "command": "astro preview",
+      "dependencies": [
+        "build"
+      ],
+      "service": true
+    },
+    "test": {
+      "command": "return 0"
+    },
+    "test:regression": {
+      "command": "playwright test",
+      "dependencies": [
+        "preview"
+      ]
+    }
   },
   "devDependencies": {
+    "@playwright/test": "^1.37.1",
+    "husky": "^8.0.3",
+    "lighthouse": "^11.0.0",
     "typescript": "^5.2.2",
     "wireit": "^0.10.0"
   },
   "dependencies": {
     "@astrojs/lit": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
-    "@ferment-ui/web-components": "^0.0.1-alpha.2",
+    "@ferment-ui/web-components": "^0.0.1-alpha.4",
     "@floating-ui/dom": "^1.5.1",
     "@webcomponents/template-shadowroot": "^0.2.1",
     "astro": "^3.0.0",
