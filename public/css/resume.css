@@ -1,0 +1,12 @@
+#skip-link {
+  display: none;
+}
+
+[role=banner] {
+  display: none;
+}
+
+#details-toggles {
+  display: none;
+}
+
