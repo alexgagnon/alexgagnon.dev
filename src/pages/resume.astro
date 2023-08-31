@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import {FUICard} from '@ferment-ui/web-components';
+import {Star, Certification} from 'lucide'
 
 enum SKILLS {
   Astro = "Astro",
@@ -150,6 +151,7 @@ const education = [
     school: "Carleton University",
     date: "September 2019 - Present",
     text: "Specialization in Big Data Management and Machine Learning. Courses include reviewing emerging technologies in retrieval, processing algorithms, storage of big data, security, and knowledge representation. Thesis includes researching the performance of different data structures for storing and retrieving large corpora of entity labels.",
+    highlights: ["CGPA: 11.4/12"]
   },
   {
     title: "Bachelor of Computer Science",
@@ -192,6 +194,11 @@ const certifications = [
 
 const awards = [
   {
+    title: "Award of Excellence",
+    employer: "Health Canada",
+    date: "2018, 2019, 2021"
+  },
+  {
     title: "Rookie Developer of the Year",
     employer: "Health Canada",
     date: "2017"
@@ -205,7 +212,7 @@ const awards = [
 ---
 
 <Layout title="Resumé">
-  <link slot="styles" rel="stylesheet" media="print" href="/resume.css" />
+  <link slot="styles" rel="stylesheet" media="print" href="/css/resume.css" />
   <div class="page">
     <h1>Resumé</h1>
     <div id="details-toggles" class='flex g mb'>
@@ -288,26 +295,19 @@ const awards = [
     </details>
     <details open>
       <summary><h2 class="fs-h4 ff-body inline">Certifications</h2></summary>
-      <div class='flex fd-column g-responsive mt'>
+      <ul id="certifications">
         {certifications.map(({title, date}) => (
-          <FUICard>
-            <h3>{title}</h3>
-            <p>{date}</p>
-          </FUICard>
+          <li><span class='bold'>{title}</span> - <span>{date}</span></li>
         ))}
-      </div>
+      </ul>
     </details>
     <details open>
       <summary><h2 class="fs-h4 ff-body inline">Awards</h2></summary>
-      <div class='flex fd-column g-responsive mt'>
+      <ul id="awards">
         {awards.map(({title, employer, date}) => (
-          <FUICard>
-            <h3>{title}</h3>
-            <p class='subheading'>{employer}</p>
-            <p>{date}</p>
-          </FUICard>
+          <li><span class='bold'>{title}</span> - <span>{employer}</span> - <span>{date}</span></li>
         ))}
-      </div>
+      </ul>
     </details>
   </div>
 </Layout>
@@ -331,6 +331,7 @@ const awards = [
 </script>
 
 <style>
+
   details {
     margin-bottom: var(--spacing-responsive);
   }
@@ -338,6 +339,19 @@ const awards = [
   summary {
     cursor: pointer;
     vertical-align: middle;
+  }
+
+  #certifications li {
+    list-style-image: url(/images/scroll.svg);
+  }
+
+  li::marker {
+    font-size: 1.55rem;
+  }
+
+  #awards li {
+    list-style-image: url(/images/star.svg);
+    font-size: 1rem;
   }
 
   h2 {

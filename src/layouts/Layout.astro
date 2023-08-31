@@ -1,6 +1,5 @@
 --- 
 import { FUIEmailAddress } from '@ferment-ui/web-components';
-import { createIcons, ExternalLink } from 'lucide';
 
 interface Props {
 	title: string;
@@ -56,13 +55,21 @@ const pathname = new URL(Astro.request.url).pathname;
       })
 
       // wait for both fonts and DOM content to be loaded to reduce CLS
-      Promise.all([isFontsLoaded, isDCL]).then(function() {
+      Promise.allSettled([isFontsLoaded, isDCL]).then(function() {
         document.documentElement.classList.remove('v-hidden');
       });
     </script>
 		<meta name="generator" content={Astro.generator} />
     <slot name='styles'></slot>
 	</head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4294VBW15L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-4294VBW15L');
+  </script>
 	<body>
     <a href='#main' class='v-on-pin a-center'>Skip to main content</a>
     <header role="banner">
@@ -90,12 +97,18 @@ const pathname = new URL(Astro.request.url).pathname;
 
 <script>
   import {computePosition, shift} from "@floating-ui/dom";
-  import {createIcons, ExternalLink, Github} from 'lucide';
+  import {createIcons, ExternalLink, Github, Scroll, Star} from 'lucide';
+  import Hotjar from '@hotjar/browser';
+
+  const siteId = 3634675;
+  const hotjarVersion = 6;
+
+  Hotjar.init(siteId, hotjarVersion);
 
   const menuToggle = document.getElementById('menu-toggle');
   const menuItems = document.getElementById('menu-items');
 
-  menuToggle.addEventListener('click', () => {
+  menuToggle?.addEventListener('click', () => {
     const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
     menuToggle.setAttribute('aria-expanded', !isExpanded);
     update();
@@ -116,7 +129,9 @@ const pathname = new URL(Astro.request.url).pathname;
   createIcons({
     icons: {
       ExternalLink,
-      Github
+      Github,
+      Scroll,
+      Star
     }
   })
 </script>
