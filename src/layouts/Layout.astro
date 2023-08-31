@@ -26,7 +26,7 @@ const pathname = new URL(Astro.request.url).pathname;
 	<head>
 		<meta charset="UTF-8" />
 		<title>Alex Gagnon | {title}</title>
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content="Personal site for Alex Gagnon">
     <script is:inline>
@@ -37,9 +37,9 @@ const pathname = new URL(Astro.request.url).pathname;
       document.documentElement.classList.add('v-hidden');
 
       const fonts = [
-        new FontFace('Playfair Display', 'url(/fonts/PlayfairDisplay-Italic-subset.woff2) format("woff2")', {style: 'italic', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
-        new FontFace('Bricolage Grotesque', 'url(/fonts/BricolageGrotesque-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9'}),
-        new FontFace('Handjet', 'url(/fonts/Handjet-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+41,U+47,U+61,U+65,U+67,U+6C,U+6E,U+6F,U+78'}),
+        new FontFace('Playfair Display', 'url(/fonts/PlayfairDisplay-Italic-subset.woff2) format("woff2")', {style: 'italic', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9', display: "swap"}),
+        new FontFace('Bricolage Grotesque', 'url(/fonts/BricolageGrotesque-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+20-7E,U+C9,U+E9', display: "swap"}),
+        new FontFace('Handjet', 'url(/fonts/Handjet-Regular-subset.woff2) format("woff2")', {style: 'normal', weight: '400', unicodeRange: 'U+41,U+47,U+61,U+65,U+67,U+6C,U+6E,U+6F,U+78', display: "swap"}),
       ];
 
       fonts.forEach(font => document.fonts.add(font));
@@ -62,7 +62,6 @@ const pathname = new URL(Astro.request.url).pathname;
 		<meta name="generator" content={Astro.generator} />
     <slot name='styles'></slot>
 	</head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4294VBW15L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -97,7 +96,7 @@ const pathname = new URL(Astro.request.url).pathname;
 
 <script>
   import {computePosition, shift} from "@floating-ui/dom";
-  import {createIcons, ExternalLink, Github, Scroll, Star} from 'lucide';
+  import {createIcons, ExternalLink, Github} from 'lucide';
   import Hotjar from '@hotjar/browser';
 
   const siteId = 3634675;
@@ -129,9 +128,7 @@ const pathname = new URL(Astro.request.url).pathname;
   createIcons({
     icons: {
       ExternalLink,
-      Github,
-      Scroll,
-      Star
+      Github
     }
   })
 </script>
