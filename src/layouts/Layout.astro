@@ -88,8 +88,9 @@ const pathname = new URL(Astro.request.url).pathname;
     <main id="main" class="page">
       <slot />
     </main>
-    <footer>
-      <p class='fs-h5'>© {new Date().getFullYear()} | Alex Gagnon</p>
+    <footer class='flex ai-center m'>
+      <p class='fs-h5 fg-1'>© {new Date().getFullYear()} | Alex Gagnon</p>
+      <a style="margin: 0;" href="/privacy">Privacy Policy</a>
     </footer>
 	</body>
 </html>
@@ -492,6 +493,10 @@ const pathname = new URL(Astro.request.url).pathname;
 
   .fd-row {
     flex-direction: row;
+  }
+
+  .fg-1 {
+    flex-grow: 1;
   }
 
   .page {
