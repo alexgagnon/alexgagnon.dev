@@ -38,7 +38,7 @@
       "service": true
     },
     "test": {
-      "command": "return 0"
+      "command": "exit 0"
     },
     "test:regression": {
       "command": "playwright test",

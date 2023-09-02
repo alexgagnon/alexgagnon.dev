@@ -29,7 +29,6 @@ const pathname = new URL(Astro.request.url).pathname;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content="Personal site for Alex Gagnon">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4294VBW15L"></script>
     <script is:inline>
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
@@ -61,15 +60,7 @@ const pathname = new URL(Astro.request.url).pathname;
       });
     </script>
     <slot name='styles' />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4294VBW15L"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-      gtag('config', 'G-4294VBW15L');
-      </script>
-      <meta name="generator" content={Astro.generator} />
+    <meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
     <a href='#main' class='v-on-pin a-center'>Skip to main content</a>
@@ -94,8 +85,9 @@ const pathname = new URL(Astro.request.url).pathname;
       <p class='fs-h5 fg-1'>© {new Date().getFullYear()} | Alex Gagnon</p>
       <a style="margin: 0;" href="/privacy">Privacy Policy</a>
     </footer>
+    <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
 	</body>
-  <script is:inline>console.log('END')</script>
 </html>
 
 <script>
