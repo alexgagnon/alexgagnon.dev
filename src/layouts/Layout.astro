@@ -61,6 +61,19 @@ const pathname = new URL(Astro.request.url).pathname;
     </script>
     <slot name='styles' />
     <meta name="generator" content={Astro.generator} />
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="https://alexgagnondev.matomo.cloud/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='//cdn.matomo.cloud/alexgagnondev.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
 	</head>
 	<body>
     <a href='#main' class='v-on-pin a-center'>Skip to main content</a>
@@ -85,20 +98,20 @@ const pathname = new URL(Astro.request.url).pathname;
       <p class='fs-h5 fg-1'>© {new Date().getFullYear()} | Alex Gagnon</p>
       <a style="margin: 0;" href="/privacy">Privacy Policy</a>
     </footer>
-    <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+    <!-- <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript> -->
 	</body>
 </html>
 
 <script>
   import {computePosition, shift} from "@floating-ui/dom";
   import {createIcons, ExternalLink, Github} from 'lucide';
-  import Hotjar from '@hotjar/browser';
+  // import Hotjar from '@hotjar/browser';
 
-  const siteId = 3634675;
-  const hotjarVersion = 6;
+  // const siteId = 3634675;
+  // const hotjarVersion = 6;
 
-  Hotjar.init(siteId, hotjarVersion);
+  // Hotjar.init(siteId, hotjarVersion);
 
   const menuToggle = document.getElementById('menu-toggle');
   const menuItems = document.getElementById('menu-items');
