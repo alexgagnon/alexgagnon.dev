@@ -29,6 +29,7 @@ const pathname = new URL(Astro.request.url).pathname;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content="Personal site for Alex Gagnon">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4294VBW15L"></script>
     <script is:inline>
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
@@ -59,15 +60,16 @@ const pathname = new URL(Astro.request.url).pathname;
         document.documentElement.classList.remove('v-hidden');
       });
     </script>
-		<meta name="generator" content={Astro.generator} />
     <slot name='styles' />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4294VBW15L"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
+      
       gtag('config', 'G-4294VBW15L');
-    </script>
+      </script>
+      <meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
     <a href='#main' class='v-on-pin a-center'>Skip to main content</a>
