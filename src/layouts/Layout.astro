@@ -1,4 +1,5 @@
 --- 
+import { ViewTransitions } from 'astro:transitions';
 import { FUIEmailAddress } from '@ferment-ui/web-components';
 
 interface Props {
@@ -29,6 +30,7 @@ const pathname = new URL(Astro.request.url).pathname;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content="Personal site for Alex Gagnon">
+    <ViewTransitions />
     <script is:inline>
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
@@ -64,6 +66,7 @@ const pathname = new URL(Astro.request.url).pathname;
     <script>
       var _paq = window._paq = window._paq || [];
       /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['disableCookies']);
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
       (function() {
@@ -98,8 +101,6 @@ const pathname = new URL(Astro.request.url).pathname;
       <p class='fs-h5 fg-1'>© {new Date().getFullYear()} | Alex Gagnon</p>
       <a style="margin: 0;" href="/privacy">Privacy Policy</a>
     </footer>
-    <!-- <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript> -->
 	</body>
 </html>
 
